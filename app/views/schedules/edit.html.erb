@@ -1,0 +1,30 @@
+<h3 class="new_title">予定を編集してください</h3>
+
+<%= render"shared/error", obj:@schedule %>
+
+<%= form_with model: @schedule do |f|%>
+    <div class="new_form">
+        <%= f.label:title,"タイトル(必須)"%>
+        <p><%= f.text_field:title,class:"new_field"%></p>
+        <div class="days">
+            <p class="startday"><%= f.label:startday,"開始日(必須)"%>
+            <%= f.text_field:startday%></p>
+            <p class="endday"><%= f.label:endday,"終了日(必須)"%>
+            <%= f.text_field:endday%></p>
+        </div>
+        <p>
+            <%= f.check_box:checkbox,{id: ":allday_check"},checked_value='1', unchecked_value='0'%>
+            <%= f.label:title,"終日の場合はチェックを入れます"%>
+        </p>
+        <%= f.label:title,"スケジュールメモ"%>
+        <p><%= f.text_area:text,class:"new_area",class:"new_text"%></p>
+        <div class="new_button">
+            <%= f.submit"編集を完了する",class:"save_button"%>
+            <%= link_to"キャンセル",:schedules,class:"cansel_button"%>
+        </div>
+    </div>
+<% end %>
+
+<% if flash[:notice_error] %>
+<p class="notice_error"><%= flash[:notice_error] %></p>
+<% end %>
