@@ -1,0 +1,64 @@
+<body>
+  
+  <div class="main_container">
+    <div class="pagetitle">
+      <p class="pagetitle_text">予定一覧</p>
+        <%=link_to"新規追加",:new_schedule,class:"shedules_button" %>
+    </div>
+
+    <table class="index_table">
+      <thead>
+        <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日時</th>  
+        <th></th>
+        <th></th>
+        <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @schedules.each do |schedule|%>
+          <tr>
+            <td><%= schedule.id%></td>
+            <td><%= schedule.title%></td>
+            <td><%= schedule.startday.strftime("%Y/%m/%d")%></td>
+            <td><%= schedule.endday.strftime("%Y/%m/%d")%></td>
+            <td>
+              <% if schedule.checkbox == true %>
+                  ○
+              <% elsif schedule.checkbox == false %>
+              <% end %>
+            </td>
+            <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+            <td><%= link_to"詳細",schedule %></td>
+            <td><%= link_to"編集",[:edit,schedule]%></td>
+            <td><%= link_to"削除",schedule,method: :delete,data:{confirm:"本当に削除しますか？"}%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+
+    <div class="total">
+      <div class"total_count">
+        <p>予定合計
+        <span></span>
+        <%= @schedules.count%>件</p>
+      </div>
+      <div>
+        <p>本日の日付
+          <%= Date.current.strftime("%Y/%m/%d")%>                    
+        </p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+</body>

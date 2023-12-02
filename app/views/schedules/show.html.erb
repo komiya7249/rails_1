@@ -1,0 +1,34 @@
+<div class="show_page">
+  <%= link_to"←一覧に戻る",:schedules%>
+
+  <div class="title_area">
+    <p class="show_title"><%= @schedule.title%></p>
+    <%= link_to"編集",[:edit,@schedule],class:"show_edit"%>
+  </div>
+
+  <div class="table_area">
+    <table class="show_table">
+      <tr>
+          <th class="show_th">開始日</th>
+          <td class="show_td"><%= @schedule.startday.strftime("%Y/%m/%d")%></td>
+      </tr>
+      <tr>
+          <th class="show_th">終了日</th>
+          <td class="show_td"><%= @schedule.endday.strftime("%Y/%m/%d")%></td>
+      </tr>
+      <tr>
+          <th class="show_th">終日</th>
+          <td class="show_td">
+            <% if @schedule.checkbox == true %>
+              ○
+            <% elsif @schedule.checkbox == false %>
+            <% end %>
+          </td>
+      </tr>
+      <tr>
+          <th class="show_th">スケジュールメモ</th>
+          <td class="show_td"><%= @schedule.text%></td>
+      </tr>
+    </table>
+  </div>
+</div>
