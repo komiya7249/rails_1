@@ -7,14 +7,14 @@
         <%= f.label:title,"タイトル(必須)"%>
         <p><%= f.text_field:title,class:"new_field"%></p>
         <div class="days">
-            <p class="startday"><%= f.label:startday,"開始日(必須)"%>
-            <%= f.text_field:startday%></p>
-            <p class="endday"><%= f.label:endday,"終了日(必須)"%>
-            <%= f.text_field:endday%></p>
+          <p class="startday"><%= f.label :startday,"開始日(必須)"%>
+          <%= f.date_field :startday%></p>
+          <p class="endday"><%= f.label:endday,"終了日(必須)"%>
+          <%= f.date_field :endday%></p>
         </div>
         <p>
             <%= f.check_box:checkbox,{id: ":allday_check"},checked_value='1', unchecked_value='0'%>
-            <%= f.label:title,"終日の場合はチェックを入れます"%>
+            <%= f.label:allday_check,"終日の場合はチェックを入れます"%>
         </p>
         <%= f.label:title,"スケジュールメモ"%>
         <p><%= f.text_area:text,class:"new_area",class:"new_text"%></p>

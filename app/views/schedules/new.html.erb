@@ -4,20 +4,20 @@
 
 <%= form_with model: @schedule do |f|%>
     <div class="new_form">
-        <%= f.label:title,"タイトル(必須)"%>
-        <p><%= f.text_field:title,class:"new_field"%></p>
+        <%= f.label :title,"タイトル(必須)"%>
+        <p><%= f.text_field :title,class:"new_field"%></p>
         <div class="days">
-            <p class="startday"><%= f.label:startday,"開始日(必須)"%>
-            <%= f.text_field:startday%></p>
-            <p class="endday"><%= f.label:endday,"終了日(必須)"%>
-            <%= f.text_field:endday%></p>
+          <p class="startday"><%= f.label :startday,"開始日(必須)"%>
+          <%= f.date_field :startday%></p>
+          <p class="endday"><%= f.label:endday,"終了日(必須)"%>
+          <%= f.date_field :endday%></p>
         </div>
         <p>
-            <%= f.check_box:checkbox,{id: :allday_check},checked_value='true', unchecked_value='false'%>
-            <%= f.label:title,"終日の場合はチェックを入れます"%>
+            <%= f.check_box :checkbox,{id: :allday_check},checked_value='true', unchecked_value='false'%>
+            <%= f.label :title,"終日の場合はチェックを入れます"%>
         </p>
         <%= f.label:title,"スケジュールメモ"%>
-        <p><%= f.text_area:text,class:"new_area",class:"new_text"%></p>
+        <p><%= f.text_area :text,class:"new_area",class:"new_text"%></p>
         <div class="new_button">
             <%= f.submit"保存",class:"save_button"%>
             <%= link_to"キャンセル",:schedules,class:"cansel_button"%>
